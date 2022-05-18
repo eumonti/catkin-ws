@@ -1,11 +1,15 @@
 name: test
 on: [push, pull_request]
+
 jobs:
-  test:
+  industrial_ci:
+    strategy:
+      matrix:
+        env:
+          - {ROS_DISTRO: melodic, ROS_REPO: testing}
+          - {ROS_DISTRO: melodic, ROS_REPO: main}
     runs-on: ubuntu-latest
-    container: ros:melodic
-    name: test
     steps:
-      - uses: actions/checkout@v3
-      - run: chmod +x ./ci-test.sh
-      - run: ./ci-test.sh
+      - uses: actions/checkout@v1
+      - uses: 'ros-industrial/industrial_ci@master'
+        env: ${{matrix.env}}
