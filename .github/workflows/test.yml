@@ -2,7 +2,7 @@ name: test
 on: [push, pull_request]
 
 jobs:
-  industrial_ci:
+  test:
     strategy:
       matrix:
         env:
@@ -12,4 +12,4 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: 'ros-industrial/industrial_ci@master'
-        env: ${{matrix.env}}
+        env: ${{ matrix.env }}
