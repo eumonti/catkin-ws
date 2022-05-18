@@ -18,13 +18,14 @@ TEST(accumulator, count) {
     constexpr int SIZE = 3;
     dys::accumulator<std::uint32_t> acc(SIZE, 0, std::vector<std::uint32_t>(SIZE));
 
+    ASSERT_EQ(acc.count(), 0);
     for (int i = 1; i <= SIZE; i++) {
         acc.load(42);
         ASSERT_EQ(acc.count(), i);
     }
     
-    ASSERT_EQ(acc.count(), 1);
-    ASSERT_EQ(acc.level(), 42);
+    ASSERT_EQ(acc.count(), SIZE);
+    ASSERT_EQ(acc.level(), 42 * SIZE);
 
     SUCCEED();
 }
