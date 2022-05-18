@@ -1,4 +1,4 @@
 #!/bin/bash
 
 source /opt/ros/melodic/setub.bash
-catkin_make run_tests
+/opt/ros/melodic/bin/catkin_make run_tests
