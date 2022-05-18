@@ -7,6 +7,6 @@ jobs:
     name: test
     steps:
       - uses: actions/checkout@v3
-      - run: ls /opt
+      - run: ls /opt/ros
       - run: /bin/bash -c '. /opt/ros/melodic/setup.bash'
       - run: catkin_make run_test
