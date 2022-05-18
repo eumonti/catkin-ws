@@ -3,7 +3,7 @@ on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
-    container: ros:melodic-ros-core-bionic
+    container: ros:melodic-ros-base-bionic
     name: test
     steps:
       - uses: actions/checkout@v3
