@@ -7,4 +7,4 @@ jobs:
     name: test
     steps:
       - uses: actions/checkout@v3
-      - run: ci-test.sh
+      - run: ./ci-test.sh
