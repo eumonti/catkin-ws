@@ -7,5 +7,8 @@
         "/opt/ros/melodic/lib/python2.7/dist-packages"
     ],
     "cmake.sourceDirectory": "${workspaceFolder}/src",
-    "cmake.configureOnOpen": true
+    "cmake.configureOnOpen": true,
+    "files.associations": {
+        "atomic": "cpp"
+    }
 }
