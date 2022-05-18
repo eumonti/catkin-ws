@@ -8,5 +8,5 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: ls /opt/ros
-      - run: /bin/bash -c '. /opt/ros/melodic/setup.bash'
+      - run: /bin/bash -c '. /opt/ros/melodic/setup.sh'
       - run: catkin_make run_test
