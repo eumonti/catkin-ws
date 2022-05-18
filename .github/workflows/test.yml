@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: |
-         source /opt/ros/kinetic/setup.bash
+         /bin/bash -c '. /opt/ros/kinetic/setup.bash'
       - run: |
          catkin_make run_test
 
