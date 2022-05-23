@@ -5,6 +5,7 @@ jobs:
   push-test-image:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - name: Login to Github Container Registry
         uses: docker/login-action@v2
         with:
