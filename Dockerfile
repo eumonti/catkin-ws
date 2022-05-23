@@ -7,4 +7,4 @@ RUN apt-get update && apt-get install -y --no-install-recommends gnupg2 && \
     apt-key add /tmp/ros.asc
 
 RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu bionic main" > /etc/apt/sources.list.d/ros-latest.list'
-RUN apt-get update && apt-get install -y --no-install-recommends ros-melodic-desktop-full
+RUN apt-get update && apt-get install -y --no-install-recommends ros-melodic-ros-base
