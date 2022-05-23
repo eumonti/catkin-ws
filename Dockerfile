@@ -8,5 +8,6 @@ ADD https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc /tmp/ros.asc
 RUN cat /tmp/ros.asc | apt-key add -
 
 RUN apt-get update
+# https://stackoverflow.com/a/51752997
 RUN apt-get install -y gnupg2
 RUN apt-get install -y ros-melodic-desktop-full
