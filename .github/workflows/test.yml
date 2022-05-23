@@ -2,14 +2,29 @@ name: test
 on: [push, pull_request]
 
 jobs:
+  push-test-image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Login to Github Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build the catkin-test image
+        run: |
+          docker build . --tag ghcr.io/${{ github.actor }}/catkin-test:latest
+          docker push ghcr.io/${{ github.actor }}/catkin-test:latest
+
   test:
+    needs: push-test-image
     strategy:
       matrix:
         env:
-          - {ROS_DISTRO: melodic, ROS_REPO: testing}
-          - {ROS_DISTRO: melodic, ROS_REPO: main}
+          - {ROS_DISTRO: melodic, DOCKER_IMAGE: "ghcr.io/${{ github.actor }}/catkin-test:latest", ROS_REPO: testing}
+          - {ROS_DISTRO: melodic, DOCKER_IMAGE: "ghcr.io/${{ github.actor }}/catkin-test:latest", ROS_REPO: main}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
       - uses: 'ros-industrial/industrial_ci@master'
         env: ${{ matrix.env }}
