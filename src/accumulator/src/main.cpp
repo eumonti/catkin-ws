@@ -11,6 +11,6 @@ int main(int argc, char **argv) {
 
     ros::NodeHandle nh;
     auto _subscriber = nh.subscribe("/data", 50, data_handler);
-
+    ROS_INFO("Hello world\n");
     ros::spin();
 }
