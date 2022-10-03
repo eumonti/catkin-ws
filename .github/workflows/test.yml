@@ -14,16 +14,16 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build the catkin-test image
         run: |
-          docker build . --tag ghcr.io/alessandrobiaggi/catkin-test:latest
-          docker push ghcr.io/alessandrobiaggi/catkin-test:latest
+          docker build . --tag ghcr.io/eumonti/catkin-test:latest
+          docker push ghcr.io/eumonti/catkin-test:latest
 
   test:
     needs: push-test-image
     strategy:
       matrix:
         env:
-          - {ROS_DISTRO: melodic, DOCKER_IMAGE: "ghcr.io/alessandrobiaggi/catkin-test:latest", ROS_REPO: testing}
-          - {ROS_DISTRO: melodic, DOCKER_IMAGE: "ghcr.io/alessandrobiaggi/catkin-test:latest", ROS_REPO: main}
+          - {ROS_DISTRO: melodic, DOCKER_IMAGE: "ghcr.io/eumonti/catkin-test:latest", ROS_REPO: testing}
+          - {ROS_DISTRO: melodic, DOCKER_IMAGE: "ghcr.io/eumonti/catkin-test:latest", ROS_REPO: main}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
